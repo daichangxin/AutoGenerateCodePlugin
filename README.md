@@ -17,3 +17,8 @@ code_path=D:\workspace\path_to_output_code
 - - 'bar_'为GProgressBar
 - - 'slider_'为GSlider
 - - 'comb_'为GComboBox
+
+## 参考
+1. http://ask.fairygui.com/?/question/5
+2. http://www.fairygui.com/guide/
+
