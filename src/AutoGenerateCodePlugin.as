@@ -62,7 +62,7 @@ public final class AutoGenerateCodePlugin implements IPublishHandler
         if (!codeFolder.exists)
             codeFolder.createDirectory();
         //包
-        var packageName:String = bindPackage;
+        var packageName:String = 'c';
         classCodes.push("namespace " + packageName);
         classCodes.push("{");
 
