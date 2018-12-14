@@ -59,14 +59,6 @@ public final class AutoGenerateCodePlugin implements IPublishHandler
         var codeFolder:File = new File(data.filePath);
         var bindPackage:String = PinYinUtils.toPinyin(data.targetUIPackage.name);
         codeFolder = codeFolder.resolvePath(code_path);
-        try
-        {
-            codeFolder.deleteDirectory(true)
-        }
-        catch (error:Error)
-        {
-        }
-
         if (!codeFolder.exists)
             codeFolder.createDirectory();
         //包
