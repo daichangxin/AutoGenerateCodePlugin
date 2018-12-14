@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="Flex" version="4">
+  <component name="FlexBuildConfigurationManager" active="AutoEgretCodePlugin">
+    <configurations>
+      <configuration name="AutoEgretCodePlugin" target-platform="Desktop" pure-as="true" output-type="Library" output-file="AutoEgretCodePlugin.swc" output-folder="D:/Program Files (x86)/FairyGUI-Editor/plugins">
+        <dependencies target-player="30.0">
+          <entries>
+            <entry library-id="15c1cd15-3100-4738-a88a-b0894ea44f09">
+              <dependency linkage="Merged" />
+            </entry>
+            <entry library-id="31d38ab0-d2c8-49ab-88a1-2240fc33c8d6">
+              <dependency linkage="External" />
+            </entry>
+            <entry library-id="9ab99f97-ddcc-4281-bf88-9fc5c505a46c">
+              <dependency linkage="Merged" />
+            </entry>
+            <entry library-id="b3b0d4b4-237c-4458-b7c4-561417eb3d9b">
+              <dependency linkage="Merged" />
+            </entry>
+            <entry library-id="970933e8-d6e3-45f2-9c08-060785d781dd">
+              <dependency linkage="Merged" />
+            </entry>
+          </entries>
+          <sdk name="flex_sdk_4.6" />
+        </dependencies>
+        <compiler-options />
+        <packaging-air-desktop />
+        <packaging-android />
+        <packaging-ios />
+      </configuration>
+    </configurations>
+    <compiler-options />
+  </component>
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+    </content>
+    <orderEntry type="jdk" jdkName="flex_sdk_4.6" jdkType="Flex SDK Type (new)" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library" exported="">
+      <library type="flex">
+        <properties id="15c1cd15-3100-4738-a88a-b0894ea44f09" />
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/libs/as3corelib.swc!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library type="flex">
+        <properties id="31d38ab0-d2c8-49ab-88a1-2240fc33c8d6" />
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/libs/FairyGUI-as3.swc!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library type="flex">
+        <properties id="9ab99f97-ddcc-4281-bf88-9fc5c505a46c" />
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/libs/greensock.swc!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library type="flex">
+        <properties id="b3b0d4b4-237c-4458-b7c4-561417eb3d9b" />
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/libs/sw3.swc!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library type="flex">
+        <properties id="970933e8-d6e3-45f2-9c08-060785d781dd" />
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/libs/ziparchive0.2.swc!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+  </component>
+</module>
