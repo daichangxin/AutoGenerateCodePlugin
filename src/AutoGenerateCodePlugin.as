@@ -1,12 +1,8 @@
-/*******************************************
- * Author : hanxianming
- * Date   : 2016-3-23
- * Use    :
- *******************************************/
-
 package
 {
-import com.pawgame.StringUtils;
+import com.pawgame.modules.uicode.CodeDeleExport;
+import com.pawgame.modules.uicode.CodeUIExport;
+import com.pawgame.modules.uicode.MemberVo;
 
 import fairygui.editor.plugin.ICallback;
 import fairygui.editor.plugin.IFairyGUIEditor;
@@ -19,9 +15,14 @@ public final class AutoGenerateCodePlugin implements IPublishHandler
 {
     private var _editor:IFairyGUIEditor;
 
+    private var _uiExport:CodeUIExport;
+    private var _deleExport:CodeDeleExport;
+
     public function AutoGenerateCodePlugin(editor:IFairyGUIEditor)
     {
         _editor = editor;
+        _uiExport = new CodeUIExport();
+        _deleExport = new CodeDeleExport();
     }
 
 
@@ -45,7 +46,7 @@ public final class AutoGenerateCodePlugin implements IPublishHandler
         if (_editor.project.customProperties["gen_code"] != "true")
             return false;
 
-        var classCodes:Array = [];
+        var packageCodes:Array = [];
 
         var code_path:String = _editor.project.customProperties["code_path"];
         if (code_path == "" || code_path == null)
@@ -63,102 +64,90 @@ public final class AutoGenerateCodePlugin implements IPublishHandler
             codeFolder.createDirectory();
         //包
         var packageName:String = 'c';
-        classCodes.push("namespace " + packageName);
-        classCodes.push("{");
+        packageCodes.push("namespace " + packageName);
+        packageCodes.push("{");
 
         //各个类
         var hasOutput:Boolean;
-        var logInfo:String = "";
         for each(var classInfo:Object in data.outputClasses)
         {
             var className:String = PinYinUtils.toPinyin(classInfo.className);
-            if (className.indexOf('UI_') != 0) continue;
-            hasOutput = true;
-
-            classCodes.push("\texport class " + className + " extends g.GAsyncPanel");
-            classCodes.push("\t{");
-
-            var memberInfo:Object;
-            var memberName:String;
-            //遍历写入变量名
-            for each(memberInfo in classInfo.members)
+            var classCodes:Array;
+            if (className.indexOf('UI_') == 0)
             {
-                memberName = memberInfo.name;
-                logInfo += StringUtils.stringfy(memberInfo);
-                if (checkIsUseDefaultName(memberName)) continue;
-                var memberType:String = memberInfo.type;
-                if (memberType == 'Controller')
+                classCodes = _uiExport.doExport(bindPackage, className, this.getAllMembers(classInfo));
+                if (classCodes && classCodes.length)
                 {
-                }
-                else if (memberType == 'Transition')
-                {
-                }
-                else if (memberType == 'GComponent')
-                {
-                    if (memberName.indexOf('btn_') == 0 || memberName.indexOf('tab_') == 0 ||
-                            memberName.indexOf('ck_') == 0 || memberName.indexOf('rb_') == 0)
-                    {
-                        memberType = 'GButton';
-                    }
-                    else if (memberName.indexOf('bar_') == 0)
-                    {
-                        memberType = 'GProgressBar';
-                    }
-                    else if (memberName.indexOf('slider_') == 0)
-                    {
-                        memberType = 'GSlider';
-                    }
-                    else if (memberName.indexOf('comb_') == 0)
-                    {
-                        memberType = 'GComboBox';
-                    }
-                }
-
-                classCodes.push("\t\t" + memberName + ":fairygui." + memberType + ";");
-            }
-
-            //写入构造函数
-            classCodes.push("\t\tconstructor()");
-            classCodes.push("\t\t{");
-            classCodes.push("\t\t\tsuper('" + bindPackage + "', '" + className + "');");
-            classCodes.push("\t\t}");
-
-            //遍历写入变量获取
-            classCodes.push("\t\tprotected doReady()");
-            classCodes.push("\t\t{");
-
-            for each(memberInfo in classInfo.members)
-            {
-                memberName = memberInfo.name;
-                if (checkIsUseDefaultName(memberName)) continue;
-                if (memberInfo.type == "Controller")
-                {
-                    classCodes.push("\t\t\tthis." + PinYinUtils.toPinyin(memberName) + " = this._skin.getController('" + memberName + "');");
-                }
-                else if (memberInfo.type == "Transition")
-                {
-                    classCodes.push("\t\t\tthis." + PinYinUtils.toPinyin(memberName) + " = this._skin.getTransition('" + memberName + "');");
-                }
-                else
-                {
-                    classCodes.push("\t\t\tthis." + PinYinUtils.toPinyin(memberName) + " = this._skin.getChild('" + memberName + "') as any;");
+                    hasOutput = true;
+                    packageCodes = packageCodes.concat(classCodes);
                 }
             }
-            classCodes.push("\t\t}");
-
-            classCodes.push("\t}");
+            else if (className.indexOf('dele_') == 0)
+            {
+                classCodes = _deleExport.doExport(bindPackage, className, this.getAllMembers(classInfo));
+                if (classCodes && classCodes.length)
+                {
+                    hasOutput = true;
+                    packageCodes = packageCodes.concat(classCodes);
+                }
+            }
+            else
+            {
+                continue;
+            }
         }
 
-        classCodes.push("}");
+        packageCodes.push("}");
         if (hasOutput)
         {
-            FileTool.writeFile(codeFolder.nativePath + File.separator + bindPackage + ".ts", classCodes.join("\r\n"));
+            FileTool.writeFile(codeFolder.nativePath + File.separator + bindPackage + ".ts", packageCodes.join("\r\n"));
         }
-
-//        _editor.alert(logInfo);
 
         callback.callOnSuccess();
         return true;
+    }
+
+    private function getAllMembers(classInfo:Object):Array
+    {
+        var memberInfo:Object;
+        var memberName:String;
+        var memberType:String;
+        var allMembers:Array = [];
+        for each(memberInfo in classInfo.members)
+        {
+            memberName = memberInfo.name;
+            if (checkIsUseDefaultName(memberName)) continue;
+            memberType = memberInfo.type;
+            if (memberType == 'Controller')
+            {
+            }
+            else if (memberType == 'Transition')
+            {
+            }
+            else if (memberType == 'GComponent')
+            {
+                if (memberName.indexOf('btn_') == 0 || memberName.indexOf('tab_') == 0 ||
+                        memberName.indexOf('ck_') == 0 || memberName.indexOf('rb_') == 0)
+                {
+                    memberType = 'GButton';
+                }
+                else if (memberName.indexOf('bar_') == 0)
+                {
+                    memberType = 'GProgressBar';
+                }
+                else if (memberName.indexOf('slider_') == 0)
+                {
+                    memberType = 'GSlider';
+                }
+                else if (memberName.indexOf('comb_') == 0)
+                {
+                    memberType = 'GComboBox';
+                }
+            }
+
+            allMembers.push(new MemberVo(memberName, memberType));
+        }
+        return allMembers;
     }
 
     private function checkIsUseDefaultName(name:String):Boolean
