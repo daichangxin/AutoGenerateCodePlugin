@@ -1,5 +1,4 @@
-package
-{
+package {
 import com.pawgame.ClassUtils;
 import com.pawgame.modules.uicode.DeleExport;
 import com.pawgame.modules.uicode.UIExport;
@@ -11,15 +10,15 @@ import fairygui.editor.plugin.IPublishHandler;
 
 import flash.filesystem.File;
 
-public final class AutoGenerateCodePlugin implements IPublishHandler
-{
+/**
+ * 导出skin中所有非系统命名变量，导出为interface格式，绑定由外部实现
+ */
+public class AutoGenInterfaceCodePlugin implements IPublishHandler {
     private var _editor:IFairyGUIEditor;
 
-    public function AutoGenerateCodePlugin(editor:IFairyGUIEditor)
-    {
+    public function AutoGenInterfaceCodePlugin(editor:IFairyGUIEditor) {
         _editor = editor;
     }
-
 
     /**
      * 组件输出类定义列表。这是一个Map，key是组件id，value是一个结构体，例如：
@@ -62,7 +61,7 @@ public final class AutoGenerateCodePlugin implements IPublishHandler
         packageCodes.push("namespace " + packageName);
         packageCodes.push("{");
 
-        //各个类
+        //各个组件
         var hasOutput:Boolean;
         for each(var classInfo:Object in data.outputClasses)
         {
@@ -70,7 +69,7 @@ public final class AutoGenerateCodePlugin implements IPublishHandler
             var classCodes:Array;
             if (className.indexOf('UI_') == 0)
             {
-                classCodes = UIExport.inst.exportClassType(bindPackage, className, ClassUtils.getAllMembers(classInfo));
+                classCodes = UIExport.inst.exportInterfaceType(bindPackage, className, ClassUtils.getAllMembers(classInfo));
                 if (classCodes && classCodes.length)
                 {
                     hasOutput = true;
@@ -79,7 +78,7 @@ public final class AutoGenerateCodePlugin implements IPublishHandler
             }
             else if (className.indexOf('dele_') == 0)
             {
-                classCodes = DeleExport.inst.exportClassType(bindPackage, className, ClassUtils.getAllMembers(classInfo));
+                classCodes = DeleExport.inst.exportInterfaceType(bindPackage, className, ClassUtils.getAllMembers(classInfo));
                 if (classCodes && classCodes.length)
                 {
                     hasOutput = true;
@@ -103,6 +102,4 @@ public final class AutoGenerateCodePlugin implements IPublishHandler
     }
 
 }
-
-
 }
