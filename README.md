@@ -1,15 +1,15 @@
 # AutoGenerateCodePlugin
-FairyGUI的Egret代码导出，需配合pargame_egret框架
+FairyGUI的typescript代码导出。
 
 ## 2019-08-14更新
-新增接口导出模式，暂时仅用在了Layabox导出类型，egret一样可以。这个模式下仅导出组件的子项的类型声明，获取方法参考下面的ts代码，相比之前的导出Class代码，要节省很多很多代码文件。
+新增接口导出模式，暂时仅用在了Layabox导出类型，egret一样可以（PlugInMain.as中修改）。这个模式下仅导出组件的子项的类型声明，获取方法参考下面的ts代码，相比之前的导出Class代码，要节省很多很多代码文件。
 ```typescript
 export function getMembersInfo(skin: fairygui.GComponent) {
     const result = {};
     //children
     let i, len = 0;
-    for (i = 0, len = skin.asCom.numChildren; i < len; i++) {
-        const child = skin.asCom.getChildAt(i);
+    for (i = 0, len = skin.numChildren; i < len; i++) {
+        const child = skin.getChildAt(i);
         const childName = child.name;
         //忽略空命名
         if (isDefaultName(childName)) continue;
@@ -35,6 +35,15 @@ export function getMembersInfo(skin: fairygui.GComponent) {
     }
     return result;
 }
+
+export function isDefaultName(name: string) {
+    if (!name) return true;
+    const first_char = name.charAt(0);
+    if (first_char == 'n' || first_char == 'c' || first_char == 't') {
+        return !isNaN(parseInt(name.substr(1)));
+    }
+    return false;
+}
 ```
 
 ## 使用
@@ -47,7 +56,7 @@ code_path=D:\workspace\path_to_output_code
 
 ## 匹配规则
 - 每个包仅生成一个ts文件(防止类文件过多)
-- 仅导出组件名以UI_开头的组件(防止导出不需要的组件)
+- 仅导出组件名以'UI_'和‘dele_’开头的组件(防止导出不需要的组件)
 - GComponent类型，会检测：
 - - 'btn_', 'tab_', 'rb_'为GButton
 - - 'bar_'为GProgressBar

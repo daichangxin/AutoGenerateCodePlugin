@@ -1,19 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="587046cf-8a96-48f2-a517-754cf9f81761" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/AutoGenInterfaceCodePlugin.as" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/pawgame/ClassUtils.as" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/pawgame/modules/uicode/DeleExport.as" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/pawgame/modules/uicode/UIExport.as" afterDir="false" />
+    <list default="true" id="587046cf-8a96-48f2-a517-754cf9f81761" name="Default Changelist" comment="add 接口形式代码导出">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AutoEgretCodePlugin.iml" beforeDir="false" afterPath="$PROJECT_DIR$/AutoEgretCodePlugin.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AutoGenerateCodePlugin.as" beforeDir="false" afterPath="$PROJECT_DIR$/src/AutoGenerateCodePlugin.as" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PlugInMain.as" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlugInMain.as" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/pawgame/modules/uicode/CodeDeleExport.as" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/pawgame/modules/uicode/CodeUIExport.as" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/pawgame/modules/uicode/ICodeExport.as" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,12 +22,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="34" />
-    <option name="y" value="56" />
-    <option name="width" value="1936" />
-    <option name="height" value="1029" />
   </component>
   <component name="ProjectId" id="1POguaOoKlpcDQ9fjfg2v9r2jxO" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -88,7 +72,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -98,6 +84,7 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="修复会删除目录的问题" />
     <MESSAGE value="统一包名为c，减少代码大小" />
-    <option name="LAST_COMMIT_MESSAGE" value="统一包名为c，减少代码大小" />
+    <MESSAGE value="add 接口形式代码导出" />
+    <option name="LAST_COMMIT_MESSAGE" value="add 接口形式代码导出" />
   </component>
 </project>
