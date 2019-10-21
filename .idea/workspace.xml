@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="587046cf-8a96-48f2-a517-754cf9f81761" name="Default Changelist" comment="add 接口形式代码导出">
+    <list default="true" id="587046cf-8a96-48f2-a517-754cf9f81761" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AutoEgretCodePlugin.iml" beforeDir="false" afterPath="$PROJECT_DIR$/AutoEgretCodePlugin.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AutoGenInterfaceCodePlugin.as" beforeDir="false" afterPath="$PROJECT_DIR$/src/AutoGenInterfaceCodePlugin.as" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,7 +33,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.smartKeys" />

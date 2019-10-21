@@ -2,7 +2,7 @@
 <module type="Flex" version="4">
   <component name="FlexBuildConfigurationManager" active="AutoEgretCodePlugin">
     <configurations>
-      <configuration name="AutoEgretCodePlugin" target-platform="Desktop" pure-as="true" output-type="Library" output-file="AutoEgretCodePlugin.swc" output-folder="/Applications/FairyGUI-Editor.app/Contents/Resources/plugins">
+      <configuration name="AutoEgretCodePlugin" target-platform="Desktop" pure-as="true" output-type="Library" output-file="AutoEgretCodePlugin_fgui_type.swc" output-folder="$MODULE_DIR$/out">
         <dependencies target-player="30.0">
           <entries>
             <entry library-id="15c1cd15-3100-4738-a88a-b0894ea44f09">

@@ -94,7 +94,9 @@ public class AutoGenInterfaceCodePlugin implements IPublishHandler {
         packageCodes.push("}");
         if (hasOutput)
         {
-            FileTool.writeFile(codeFolder.nativePath + File.separator + bindPackage + ".ts", packageCodes.join("\r\n"));
+            var content:String = packageCodes.join("\r\n");
+            content = content.replace(/fairygui/g, 'fgui');
+            FileTool.writeFile(codeFolder.nativePath + File.separator + bindPackage + ".ts", content);
         }
 
         callback.callOnSuccess();
