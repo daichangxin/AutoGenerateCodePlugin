@@ -4,7 +4,11 @@
     <list default="true" id="587046cf-8a96-48f2-a517-754cf9f81761" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AutoEgretCodePlugin.iml" beforeDir="false" afterPath="$PROJECT_DIR$/AutoEgretCodePlugin.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/AutoEgretCodePlugin.swc" beforeDir="false" afterPath="$PROJECT_DIR$/out/AutoEgretCodePlugin.swc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/AutoEgretCodePlugin_fgui_type.swc" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AutoGenInterfaceCodePlugin.as" beforeDir="false" afterPath="$PROJECT_DIR$/src/AutoGenInterfaceCodePlugin.as" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/pawgame/modules/uicode/DeleExport.as" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/pawgame/modules/uicode/DeleExport.as" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/pawgame/modules/uicode/UIExport.as" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/pawgame/modules/uicode/UIExport.as" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

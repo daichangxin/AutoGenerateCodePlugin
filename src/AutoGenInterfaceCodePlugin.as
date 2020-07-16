@@ -37,17 +37,13 @@ public class AutoGenInterfaceCodePlugin implements IPublishHandler {
      */
     public function doExport(data:IPublishData, callback:ICallback):Boolean
     {
-        if (_editor.project.customProperties["gen_code"] != "true")
-            return false;
-
-        var packageCodes:Array = [];
-
         var code_path:String = _editor.project.customProperties["code_path"];
         if (code_path == "" || code_path == null)
         {
             callback.addMsg("请指定导出路径 code_path");
             return false;
         }
+        var packageCodes:Array = [];
 
         code_path = new File(data.filePath).resolvePath(code_path).nativePath;
 
@@ -56,11 +52,7 @@ public class AutoGenInterfaceCodePlugin implements IPublishHandler {
         codeFolder = codeFolder.resolvePath(code_path);
         if (!codeFolder.exists)
             codeFolder.createDirectory();
-        //包
-        var packageName:String = 'c';
-        packageCodes.push("namespace " + packageName);
-        packageCodes.push("{");
-
+        packageCodes.push('/* eslint-disable */');
         //各个组件
         var hasOutput:Boolean;
         for each(var classInfo:Object in data.outputClasses)
@@ -91,12 +83,12 @@ public class AutoGenInterfaceCodePlugin implements IPublishHandler {
             }
         }
 
-        packageCodes.push("}");
         if (hasOutput)
         {
             var content:String = packageCodes.join("\r\n");
             content = content.replace(/fairygui/g, 'fgui');
-            FileTool.writeFile(codeFolder.nativePath + File.separator + bindPackage + ".ts", content);
+            var outputFileName:String = _editor.project.name + "_" + bindPackage + ".d.ts";
+            FileTool.writeFile(codeFolder.nativePath + File.separator + outputFileName, content);
         }
 
         callback.callOnSuccess();

@@ -61,17 +61,17 @@ public class UIExport {
      */
     public function exportInterfaceType(resName:String, className:String, allMembers:Array):Array{
         var classCodes:Array = [];
-        classCodes.push("\texport interface " + className + "{");
+        classCodes.push("export interface " + className + "{");
 
         //写入变量声明
         var member:MemberVo;
         for each (member in allMembers)
         {
-            classCodes.push("\t\t" + member.name + ":fairygui." + member.type + ";");
+            classCodes.push("\t" + member.name + ":fgui." + member.type + ";");
         }
 
         //包结束
-        classCodes.push("\t}");
+        classCodes.push("}");
         return classCodes;
     }
 }
